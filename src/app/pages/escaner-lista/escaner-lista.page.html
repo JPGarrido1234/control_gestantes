@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-grid fixed>
+      <ion-row class="ion-text-center">
+        <ion-col class="ion-padding" size="2">
+          <img src="/assets/icon/icon_bote.png"/>
+        </ion-col>
+        <ion-col class="ion-text-center ion-padding" size="8">
+          <ion-title>{{"escanner.lista" | translate}}</ion-title>
+        </ion-col>
+        <ion-col class="ion-padding" size="1">
+          <ion-icon (click)="onClickSalir()" class="icon_home" name="home"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!isConnected" class="ion-padding ion-text-center">
+    <ion-label style="font-size: 1.8em;">Sin conexión</ion-label>
+    <div style="width: 90%; margin-left: auto; margin-right: auto; background-color:red; height: 3px;"></div>
+  </div>
+  <ion-grid class="grid">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngIf="isConnected">
+        <div *ngFor="let botes of administraciones">
+          <ion-item class="border_item" lines="none">
+            <ion-label>
+              <span>{{"escanner.recipiente" | translate}}: {{botes.recipienteACodigoBarras}}</span><br>
+              <span>{{"escanner.volumen" | translate}}: {{botes.recipienteAVolumen}} mL</span>
+            </ion-label>
+            <img *ngIf="botes.errorBote1" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+            <img *ngIf="!botes.errorBote1" style="width: 30px; height:30px;" src="/assets/icon/icon_ko.png" />
+          </ion-item>
+          <ion-item *ngIf="botes.recipienteBCodigoBarras != ''" class="border_item" lines="none">
+            <ion-label>
+              <span>{{"escanner.recipiente" | translate}}: {{botes.recipienteBCodigoBarras}}</span><br>
+              <span>{{"escanner.volumen" | translate}}: {{botes.recipienteBVolumen}} mL</span>
+            </ion-label>
+            <img *ngIf="botes.errorBote2" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+            <img *ngIf="!botes.errorBote2" style="width: 30px; height:30px;" src="/assets/icon/icon_ko.png" />
+          </ion-item>
+        </div>
+        
+        <div *ngIf="administraciones.length == 0">
+          <ion-item *ngFor="let bote of botes" class="border_item" lines="none">
+            <ion-label>
+              <span>{{"escanner.recipiente" | translate}}: {{bote.codigo}}</span><br>
+              <span>{{"escanner.volumen" | translate}}:  No existe recipiente</span>
+            </ion-label>
+            <img style="width: 30px; height:30px;" src="/assets/icon/icon_ko.png" />
+          </ion-item>
+        </div>
+      </ion-col>
+
+      <ion-col *ngIf="!isConnected" size="12">
+        <div *ngFor="let lactante of array_lactantes; let x = index">
+          <ion-item class="border_item" lines="none">
+            <ion-label >
+              <span>NHC: {{lactante.numero_pulsera}}</span><br>
+              <span>Nombre: {{lactante.nombre}} {{lactante.apellidos}}</span>
+            </ion-label>
+            <img id="{{iconAbrir}}{{x}}" style="width: 30px; height:30px;" (click)="clickInfoLactante(x)" src="/assets/icon/abrir_info.png" />
+            <img id="{{iconCerrar}}{{x}}" style="width: 30px; height:30px; display: none;" (click)="clickInfoLactante(x)" src="/assets/icon/cerrar_info.png" />
+          </ion-item>
+          <div style="display:none;" id="{{showLactante}}{{x}}">
+            <div *ngFor="let botes of administraciones">
+              <ion-item class="border_item" lines="none">
+                <ion-label>
+                  <span>{{"escanner.recipiente" | translate}}: {{botes.recipienteACodigoBarras}}</span><br>
+                  <span>{{"escanner.volumen" | translate}}: {{botes.recipienteAVolumen}} mL</span>
+                </ion-label>
+                <img *ngIf="botes.errorBote1" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+                <img *ngIf="!botes.errorBote1" style="width: 30px; height:30px;" src="/assets/icon/icon_ko.png" />
+              </ion-item>
+              <ion-item class="border_item" lines="none">
+                <ion-label>
+                  <span>{{"escanner.recipiente" | translate}}: {{botes.recipienteBCodigoBarras}}</span><br>
+                  <span>{{"escanner.volumen" | translate}}: {{botes.recipienteBVolumen}} mL</span>
+                </ion-label>
+                <img *ngIf="botes.errorBote2" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+                <img *ngIf="!botes.errorBote2" style="width: 30px; height:30px;" src="/assets/icon/icon_ko.png" />
+              </ion-item>
+            </div>    
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid fixed>
+      <ion-row *ngIf="!existLactante || (!unBoteOk && !existBotes) || (!unBoteOk && existBotes)" class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-button expand="block" (click)="clickReturnScan()">
+            {{"escanner.volver_escan" | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="existBotes || unBoteOk" class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-button (click)="clickContinuar()" expand="block">
+            {{"escanner.continuar" | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!isConnected" class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-button (click)="clickFinalizar()" expand="block">
+            Finalizar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

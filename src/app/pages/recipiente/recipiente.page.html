@@ -1,0 +1,73 @@
+<ion-header color="secondary">
+  <ion-toolbar color="secondary">
+    <ion-grid fixed>
+      <ion-row class="ion-text-center">
+        <ion-col class="ion-padding" size="2">
+          <img src="/assets/icon/icon_bote.png"/>
+        </ion-col>
+        <ion-col class="ion-text-center ion-padding" size="8">
+          <ion-title>{{"escanner.escaneos" | translate}}</ion-title>
+        </ion-col>
+        <ion-col class="ion-padding" size="1">
+          <ion-icon (click)="onClickSalir()" class="icon_home" name="home"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!isConnected" class="ion-padding ion-text-center">
+    <ion-label style="font-size: 1.8em;">{{isConnectedText}}</ion-label>
+    <div style="width: 90%; margin-left: auto; margin-right: auto; background-color:red; height: 3px;"></div>
+  </div>
+<ion-grid class="grid">
+  <ion-row class="ion-no-padding">
+    <ion-col size="12">
+        <div *ngIf="botes">
+          <div *ngFor="let bote of administraciones">
+            <ion-item  class="border_item" lines="none">
+              <ion-label>
+                <span>{{"escanner.recipiente" | translate}}: {{bote.recipienteACodigoBarras}}</span><br>
+                <span *ngIf="tipo == 'tipoA'">{{"escanner.volumen" | translate}}: {{bote.recipienteAVolumen}} mL</span>
+                <span *ngIf="tipo == 'tipoB'">{{"escanner.volumen" | translate}}: {{bote.recipienteBVolumen}} mL</span>
+                <span *ngIf="tipo == ''">{{"escanner.volumen" | translate}}: {{bote.recipienteAVolumen}} mL</span>
+              </ion-label>
+              <img *ngIf="botes.length == 2  && bote.errorBote1" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+              <img *ngIf="botes.length == 2 && !bote.errorBote1" style="width: 40px; height: 40px;" src="/assets/icon/icon_ko.png" />
+            </ion-item>
+            <ion-item *ngIf="bote.recipienteBCodigoBarras != ''" class="border_item" lines="none">
+              <ion-label>
+                <span>{{"escanner.recipiente" | translate}}: {{bote.recipienteBCodigoBarras}}</span><br>
+                <span>{{"escanner.volumen" | translate}}: {{bote.recipienteBVolumen }} mL</span>
+              </ion-label>
+              <img *ngIf="botes.length == 2 && bote.errorBote2" style="width: 40px; height: 40px;" src="/assets/icon/icon_ok.png" />
+              <img *ngIf="botes.length == 2 && !bote.errorBote2" style="width: 40px; height: 40px;" src="/assets/icon/icon_ko.png" />
+            </ion-item>
+          </div>     
+       </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="div_botones">
+      <ion-grid fixed>
+        <ion-row *ngIf="botes.length < 2 || !correctBotes[1]" class="ion-text-center ion-padding">
+          <ion-col size="12">
+            <ion-button expand="block" (click)="clickReturnScan()">
+              {{"escanner.volver_escan" | translate}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="(botes.length == 1 && correctBotes[0] == true && correctBotes[1] == false) || (botes.length == 2 && correctBotes[1] == true && correctBotes[0] == true)" class="ion-text-center ion-padding">
+          <ion-col size="12">
+            <ion-button (click)="clickContinuar()" expand="block">
+              {{"escanner.continuar" | translate}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </div>
+  </ion-toolbar>
+</ion-footer>

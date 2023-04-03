@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-grid fixed>
+      <ion-row class="ion-text-center">
+        <ion-col class="ion-padding" size="2">
+          <img src="/assets/icon/icon_bote.png"/>
+        </ion-col>
+        <ion-col class="ion-text-center ion-padding" size="8">
+          <ion-title>{{"resumen.resumen" | translate}}</ion-title>
+        </ion-col>
+        <ion-col class="ion-padding" size="1">
+          <ion-icon (click)="onClickSalir()" class="icon_home" name="home"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="grid">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12"> 
+        <div *ngIf="array_lactantes">
+          <div *ngFor="let toma of array_lactantes;">
+            <ion-row>
+              <ion-col size="12">
+                <ion-label><strong>{{"resumen.lactante" | translate}}: </strong> {{toma.nombre}} {{toma.apellidos}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <div *ngFor="let administracion of toma.administraciones;">   
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label><strong>{{"resumen.toma" | translate}}: {{administracion.horaToma | date: 'short'}}</strong> </ion-label> 
+                </ion-col>
+              </ion-row>
+              <ion-item class="border_item" lines="none">
+                <ion-label>
+                  <span>{{"escanner.recipiente" | translate}}: {{administracion.recipienteACodigoBarras}}</span><br>
+                  <span *ngIf="tipo == 'tipoA'">{{"escanner.volumen" | translate}}: {{administracion.recipienteAVolumen}} mL</span>
+                  <span *ngIf="tipo == 'tipoB'">{{"escanner.volumen" | translate}}: {{administracion.recipienteBVolumen}} mL</span>
+                  <span *ngIf="tipo == ''">{{"escanner.volumen" | translate}}: {{administracion.recipienteAVolumen}} mL</span>
+                </ion-label>
+              </ion-item>
+              <ion-item *ngIf="administracion.recipienteBCodigoBarras != ''" class="border_item" lines="none">
+                <ion-label>
+                  <span>{{"escanner.recipiente" | translate}}: {{administracion.recipienteBCodigoBarras}}</span><br>
+                  <span>{{"escanner.volumen" | translate}}: {{administracion.recipienteBVolumen}} mL</span>
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid fixed>
+      <ion-row class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-button (click)="clickContinuar()" expand="block">
+            {{"escanner.confirmar" | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,19 @@
+ion-content, ion-footer{
+    --ion-background-color:white;
+}
+#ion-overlay-2{
+    --background:white !important;
+}
+.grid{
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+.border_item{
+    border: 1px solid #fad2dc;
+    margin: 1%;
+}
+.icon_home{
+    width: 30px; 
+    height:30px;
+}

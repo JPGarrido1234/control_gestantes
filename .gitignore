@@ -1,0 +1,11 @@
+.angular/
+.browserslistrc
+.editorconfig
+.eslintrc.json
+.vscode/
+e2e/
+karma.conf.js
+node_modules/
+package-lock.json
+tsconfig.spec.json
+www/

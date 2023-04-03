@@ -1,0 +1,50 @@
+{
+    "login":{
+        "inicio_sesion": "Inicio sesión",
+        "usuario": "Usuario",
+        "placeholder_usuario": "Escribe tu nombre",
+        "contraseña": "Contraseña",
+        "palceholder_contraseña": "Escribe tu contraseña",
+        "recuerdame": "Recuérdame",
+        "forget_contraseña": "¿Olvidaste tu contraseña?",
+        "entrar": "Entrar"
+    },
+    "home":{
+        "administrar_tomas": "Administrar tomas"
+    },
+    "ajustes":{
+        "ajustes": "Ajustes",
+        "txt_idiomas": "Idioma"
+    },
+    "escanner":{
+        "title": "Escanee el recipiente a administrar",
+        "button": "Escanear",
+        "identificador_bebe": "Escanee el identificador del bebé",
+        "lista": "Listado de escaneos",
+        "recipiente": "Recipiente",
+        "volumen": "Volumen",
+        "volver_escan": "Volver a escanear",
+        "continuar": "Continuar",
+        "escaneos": "Escaneo de recipientes",
+        "confirmar": "Confirmar"
+    },
+    "correcto":{
+        "title": "¡Escaneado correcto!"
+    },
+    "fallo":{
+        "title1":"El biberón no corresponde a la toma de este neonato.",
+        "title2":"Cambie la toma para proceder con la administración.",
+        "title3":"¡Escaneado incorrecto!"
+    },
+    "resumen":{
+        "resumen": "Resumen de tomas",
+        "toma": "Toma",
+        "nhc": "NHC",
+        "lactante": "Lactante"
+    },
+    "notificacion":{
+        "title1": "Puede proceder a administrar la toma",
+        "title2": "No olvides registrar en el ordenador (web Feeding Care) la administradción.",
+        "cerrar": "Cerrar"
+    }
+}

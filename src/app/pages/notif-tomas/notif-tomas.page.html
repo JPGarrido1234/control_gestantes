@@ -1,0 +1,22 @@
+<ion-content color="secondary" [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <img src="/assets/img/logo-full.png"/>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <ion-label>{{"notificacion.title1" | translate}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center ion-padding">
+      <ion-col size="12">
+        <ion-button (click)="clickCerrar()" expand="block">
+          {{"notificacion.cerrar" | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

@@ -1,0 +1,50 @@
+{
+    "login":{
+        "inicio_sesion": "Login",
+        "usuario": "User",
+        "placeholder_usuario": "Write your name",
+        "contraseña": "Password",
+        "palceholder_contraseña": "Enter your password",
+        "recuerdame": "Remember me",
+        "forget_contraseña": "Did you forget your password?",
+        "entrar": "Get in"
+    },
+    "home":{
+        "administrar_tomas": "Manage shots"
+    },
+    "ajustes":{
+        "ajustes": "Settings",
+        "txt_idiomas": "Idiom"
+    },
+    "escanner":{
+        "title": "Scan the container to be administered",
+        "button": "Scan",
+        "identificador_bebe": "Scan the baby's ID",
+        "lista": "Scan list",
+        "recipiente": "Bowl",
+        "volumen": "Volume",
+        "volver_escan": "Rescan",
+        "continuar": "Continue",
+        "escaneos": "Vessel scanning",
+        "confirmar": "Confirmar"
+    },
+    "correcto":{
+        "title": "Correct scan!"
+    },
+    "fallo":{
+        "title1":"The bottle does not correspond to the taking of this neonate.",
+        "title2":"Change the shot to proceed with the administration.",
+        "title3":"Wrong scan!"
+    },
+    "resumen":{
+        "resumen": "Shot summary",
+        "toma": "Take",
+        "nhc": "NHC",
+        "lactante": "Lactante"
+    },
+    "notificacion":{
+        "title1": "You can proceed to administer the dose",
+        "title2": "Do not forget to register the administration on the computer (Feeding Care web).",
+        "cerrar": "Close"
+    }
+}

@@ -1,0 +1,47 @@
+ion-content{
+  --ion-background-color:#fad2dc;
+}
+ion-input {
+  padding-left: 10px !important;
+  border-left: 1px solid #f4f4f4;
+  background-color: white;
+
+  -webkit-text-fill-color: black;
+  --color: black;
+  font-weight: 500px;
+  --background: white !important;
+}
+
+.label_paso{
+  font-size: 2em;
+  font-weight: bold;
+}
+.wrapper {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+.scan-box {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.5);
+    content: "";
+    display: block;
+    left: 50%;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+  }
+  .scan-button {
+    margin: 0px;
+    position: absolute;
+    bottom: 100px;
+    width: 100vw;
+    height: 50px;
+    z-index: 11;
+  }

@@ -1,0 +1,15 @@
+<ion-content color="secondary" [fullscreen]="true">
+    <img src="/assets/img/logo-full.png"/>
+    <ion-grid fixed>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+                <ion-button (click)="onClickEscanear()" class="ion-margin" size="large" expand="block">{{'home.administrar_tomas' | translate}}</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin ion-justify-content-center">
+            <ion-col size="4">
+                <img id="style_img_gare" (click)="onClickConfiguration()" src="/assets/icon/gear_icon.png"/>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

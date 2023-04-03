@@ -1,0 +1,26 @@
+<ion-content color="secondary" [fullscreen]="true">
+  <div class="wrapper">
+    <ion-grid fixed>
+      <ion-row class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-label class="label_paso" color="primary">Paso 2</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+            <ion-label>{{"escanner.identificador_bebe" | translate}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <img src="/assets/icon/icon_bebe.png"/>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center ion-padding">
+        <ion-col size="12">
+          <ion-input (keydown.enter)="startScan()" [(ngModel)]="tomas.lactante" type="text" placeholder="lactante"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

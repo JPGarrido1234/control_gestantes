@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+  <div id="curved">
+    <img src="/assets/img/logo-full_.png"/>
+    <h1 color="light">{{ 'login.inicio_sesion' | translate}}</h1>
+  </div>
+  <ion-fab-button id="key" color="light">
+    <ion-icon color="primary" name='key'></ion-icon>
+  </ion-fab-button>
+  <div id="container">
+    <ion-item lines="none">
+      <ion-label color="medium">{{ 'login.usuario' | translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="login.usuario" placeholder="{{ 'login.placeholder_usuario' | translate}}" name="usuario">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label color="medium">{{ 'login.contraseña' | translate}}</ion-label>
+      <ion-input id="passwordType" type="password" [(ngModel)]="login.password" name="password" placeholder="{{ 'login.palceholder_contraseña' | translate}}">
+      </ion-input>
+      <ion-img class="eye_icon" *ngIf="!verPassword" (click)="toggleModePassword()" src="/assets/icon/eye_standard.svg"></ion-img>
+      <ion-img class="eye_icon tach" *ngIf="verPassword" (click)="toggleModePassword()" src="/assets/icon/eye_tachado.png"></ion-img>
+    </ion-item>
+    <ion-item id="note" lines="none">
+      <ion-checkbox color="tertiary" name="remember" [(ngModel)]="remember"></ion-checkbox>
+      <ion-label>{{ 'login.recuerdame' | translate}}</ion-label>
+      <a><small>{{ 'login.forget_contraseña' | translate}}</small></a>
+    </ion-item>
+    <ion-item *ngIf="error_login" id="note" lines="none">
+      <div style="width: 100%;">
+        <ion-label id="errorLabel" color="danger">{{msgError}}</ion-label>
+      </div>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer class="ion-padding">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <small></small>
+    </ion-item>
+    <div>
+      <ion-button (click)="loginUser()" id="signin">{{ 'login.entrar' | translate}}</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+    
+  
+
+

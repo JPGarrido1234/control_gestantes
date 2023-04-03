@@ -1,0 +1,20 @@
+ion-content, ion-footer{
+    --ion-background-color:white;
+  }
+.grid{
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+.border_item{
+    border: 1px solid #fad2dc;
+    margin: 1%;
+}
+.div_botones{
+    align-items: flex-end;
+    justify-items: end;
+}
+.icon_home{
+    width: 30px; 
+    height:30px;
+}
